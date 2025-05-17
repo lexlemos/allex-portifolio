@@ -9,11 +9,15 @@ module.exports = {
         primary: '#3490dc',
         secondary: '#ffed4a',
         dark: '#121212',
+        'dark-container': '#1a1a1a',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+        sans: ['Inknut Antiqua', 'serif'],
+        serif: ['Inknut Antiqua', 'serif'],
       },
+      borderRadius: {
+        'container': '6%',
+      }
     },
   },
   plugins: [],

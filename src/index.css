@@ -3,17 +3,29 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-family: 'Inknut Antiqua', serif;
+  }
+
   body {
     @apply bg-gray-50;
     margin: 0;
-    font-family:
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-      'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+}
+
+/* Estilos customizados */
+.rounded-container {
+  border-radius: 6%;
+}
+
+@media (max-width: 768px) {
+  .rounded-container {
+    border-radius: 12px;
   }
 }

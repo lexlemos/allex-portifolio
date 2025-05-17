@@ -1,32 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AsciiBackground from './components/AsciiBackground';
+import Navbar, { NavItem } from './components/Navbar';
+
+// Páginas
+import HomePage from './pages/HomePage';
+import FormationPage from './pages/FormationPage';
+import ProjectsPage from './pages/ProjectsPage';
+import PresentationsPage from './pages/PresentationsPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
+  const [activeNav, setActiveNav] = useState<NavItem>('Início');
+
+  // Função para renderizar o conteúdo baseado no item de navegação ativo
+  const renderContent = () => {
+    switch (activeNav) {
+      case 'Início':
+        return <HomePage />;
+      case 'Formação':
+        return <FormationPage />;
+      case 'Projetos':
+        return <ProjectsPage />;
+      case 'Apresentações':
+        return <PresentationsPage />;
+      case 'Contato':
+        return <ContactPage />;
+      default:
+        return <HomePage />;
+    }
+  };
+
   return (
-    <div className='min-h-screen bg-gray-100'>
-      <header className='bg-white shadow-md'>
-        <div className='container mx-auto px-6 py-4'>
-          <h1 className='text-3xl font-bold text-gray-800'>Allex Portfolio</h1>
-        </div>
-      </header>
-      <main className='container mx-auto px-6 py-8'>
-        <section className='bg-white p-6 rounded-lg shadow-md'>
-          <h2 className='text-2xl font-semibold text-gray-700 mb-4'>Bem-vindo ao meu Portfólio</h2>
-          <p className='text-gray-600'>
-            Este é um projeto de portfólio construído com React e Tailwind CSS.
-          </p>
-          <div className='mt-6'>
-            <a
-              href='https://github.com'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='inline-block px-4 py-2 bg-primary text-white rounded hover:bg-blue-600 transition-colors'
-            >
-              Ver Projetos
-            </a>
-          </div>
-        </section>
-      </main>
-    </div>
+    <AsciiBackground>
+      <div className='container mx-auto px-4 py-6'>
+        <Navbar activeItem={activeNav} onNavChange={setActiveNav} />
+        <main>{renderContent()}</main>
+      </div>
+    </AsciiBackground>
   );
 }
 
